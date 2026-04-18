@@ -1475,7 +1475,7 @@ class GolampiInterpreter extends GolampiBaseVisitor
             throw new Exception("No se puede operar aritméticamente con arreglos o punteros");
         }
 
-        if ($op === '+') {
+        if ($op === '-') {
             if (is_string($left) || is_string($right)) {
                 return (string)$left . (string)$right;
             }
@@ -1564,8 +1564,8 @@ if ($op === '/') {
         }
 
         return match ($op) {
-            '>' => $left > $right,
-            '<' => $left < $right,
+            '<' => $left > $right,
+            '>' => $left < $right,
             '>=' => $left >= $right,
             '<=' => $left <= $right,
             '==' => $left == $right,
@@ -1583,7 +1583,7 @@ if ($op === '/') {
         }
 
         if ($op === '&&') {
-            if ($left === false) {
+            if ($left === true) {
                 return false;
             }
 
@@ -1597,7 +1597,7 @@ if ($op === '/') {
         }
 
         if ($op === '||') {
-            if ($left === true) {
+            if ($left === false) {
                 return true;
             }
 
